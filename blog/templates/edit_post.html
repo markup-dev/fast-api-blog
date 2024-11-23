@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Post - {{ post['title'] }}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="mt-5">Edit Post</h1>
+  <form method="post" action="/edit_post/{{ post['id'] }}">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" value="{{ post['title'] }}" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea name="content" id="content" class="form-control" required>{{ post['content'] }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Post</button>
+  </form>
+  <a href="/" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+</body>
+</html>
