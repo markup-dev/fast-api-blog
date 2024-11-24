@@ -1,30 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog App</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container">
-  <h1 class="mt-5">Blog Posts</h1>
-  <a href="/create_post" class="btn btn-primary mb-3">Create New Post</a>
-  <div class="list-group">
-    {% for post in blogs %}
-    <div class="list-group-item">
-      <h5>{{ post['title'] }}</h5>
-      <p>{{ post['content'][:100] }}...</p>
-      <a href="/post/{{ loop.index0 }}" class="btn btn-secondary">Read more</a>
-      <a href="/edit_post/{{ loop.index0 }}" class="btn btn-warning">Edit</a>
-      <form method="post" action="/delete_post/{{ loop.index0 }}" style="display:inline;">
-        <button type="submit" class="btn btn-danger"
-                onclick="return confirm('Are you sure you want to delete this post?');">Delete
-        </button>
-      </form>
-    </div>
-    {% endfor %}
+{% extends "base.html" %}
+
+{% block title %}Список постов{% endblock %}
+
+{% block content %}
+<h1 class="mt-5">Посты блога</h1>
+
+<!-- Контейнер для списка постов -->
+<div class="list-group">
+  {% for post in blogs %}
+  <div class="list-group-item">
+    <!-- Заголовок поста -->
+    <h5>{{ post.title }}</h5>
+    <!-- Краткое содержимое поста (первые 100 символов) -->
+    <p>{{ post.content[:100] }}...</p>
+    <!-- Кнопка для чтения полного поста -->
+    <a href="/post/{{ post.id }}" class="btn btn-secondary mt-1">Читать далее</a>
+    <!-- Кнопка для редактирования поста -->
+    <a href="/edit_post/{{ post.id }}" class="btn btn-warning mt-1">Редактировать</a>
+    <!-- Кнопка для удаления поста -->
+    <a href="/delete_post/{{ post.id }}" class="btn btn-danger mt-1">Удалить</a>
   </div>
+  {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}

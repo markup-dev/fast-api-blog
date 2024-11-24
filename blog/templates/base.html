@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru" class="h-100">
+<head>
+  <!-- Устанавливаем кодировку страницы -->
+  <meta charset="UTF-8">
+  <!-- Настраиваем адаптивность страницы для мобильных устройств -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Заголовок страницы, который будет изменяться в зависимости от контента -->
+  <title>{% block title %}Блог{% endblock %}</title>
+  <!-- Подключаем Bootstrap для стилей -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="h-100">
+<header class="navbar-light bg-light py-4">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg d-flex justify-content-between">
+      <!-- Название блога со ссылкой на главную страницу -->
+      <a class="navbar-brand" href="/">Блог Monolith</a>
+      <!-- Кнопка для создания нового поста -->
+      <a class="btn btn-primary" href="/create_post">Создать новый пост</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Основной контейнер для контента страниц -->
+<div class="container">
+  {% block content %}{% endblock %}
+</div>
+
+<!-- Футер с авторскими правами -->
+<footer class="text-center bg-dark py-2 mt-3" style="position: sticky !important; top: 100%;">
+  <a href="/">© Блог Monolith 2024</a>
+</footer>
+</body>
+</html>

@@ -1,14 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ post.title }}</title>
-  <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-<h1>{{ post.title }}</h1>
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<!-- Заголовок поста -->
+<h1 class="mt-5">{{ post.title }}</h1>
+<!-- Полное содержимое поста -->
 <p>{{ post.content }}</p>
-<a href="/">Back to Home</a>
-</body>
-</html>
+
+<!-- Кнопка для возврата на главную страницу -->
+<a href="/" class="btn btn-secondary mt-1">Назад на главную</a>
+
+<!-- Кнопка для редактирования поста -->
+<a href="/edit_post/{{ post.id }}" class="btn btn-warning mt-1">Редактировать пост</a>
+<!-- Кнопка для удаления поста -->
+<a href="/delete_post/{{ post.id }}" class="btn btn-danger mt-1">Удалить пост</a>
+{% endblock %}

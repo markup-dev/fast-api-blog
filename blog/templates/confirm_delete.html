@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Подтверждение удаления - {{ post.title }}{% endblock %}
+
+{% block content %}
+<h1>Подтверждение удаления</h1>
+
+<!-- Сообщение с подтверждением удаления поста -->
+<p>Вы уверены, что хотите удалить пост с заголовком "<strong>{{ post.title }}</strong>"?</p>
+
+<!-- Форма для подтверждения удаления поста -->
+<form method="post" action="/delete_post/{{ post.id }}">
+  <!-- Кнопка для отправки формы и удаления поста -->
+  <button type="submit" class="btn btn-danger">Удалить пост</button>
+  <!-- Ссылка для отмены действия и возврата на главную страницу -->
+  <a href="/" class="btn btn-secondary">Отмена</a>
+</form>
+
+{% endblock %}
